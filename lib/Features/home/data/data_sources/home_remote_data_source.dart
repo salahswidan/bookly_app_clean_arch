@@ -1,5 +1,8 @@
 import 'package:bookly_app/core/utlis/api_service.dart';
+import 'package:bookly_app/core/utlis/functions/save_book.dart';
+import 'package:hive/hive.dart';
 
+import '../../../../constants.dart';
 import '../../domain/entities/book_entity.dart';
 import '../models/book_model/book_model.dart';
 
@@ -18,23 +21,25 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
         endPoint: 'volumes?q=programming&Filtering=free-ebooks');
 
     List<BookEntity> books = getBooksList(data);
+
+    saveBooksData(books, KFeaturedBox);
+
     return books;
   }
 
+
   @override
-  Future<List<BookEntity>> fetchNewestBooks() async{
-     var data = await apiService.get(
+  Future<List<BookEntity>> fetchNewestBooks() async {
+    var data = await apiService.get(
         endPoint: 'volumes?q=programming&Filtering=free-ebooks&Sorting=newest');
 
     List<BookEntity> books = getBooksList(data);
     return books;
   }
 
-  
-
   List<BookEntity> getBooksList(Map<String, dynamic> data) {
-      List<BookEntity> books = [];
-    for(var bookMap in data['items']){
+    List<BookEntity> books = [];
+    for (var bookMap in data['items']) {
       books.add(BookModel.fromJson(bookMap));
     }
     return books;
