@@ -6,3 +6,4 @@ const KTranstionDuration = Duration(milliseconds: 250);
 
 const KGTSectraFine = 'GT Sectra Fine';
 const KFeaturedBox = 'featured_box';
+const KNewestBox = 'newest_box';
