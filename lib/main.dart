@@ -12,6 +12,7 @@ import 'package:bookly_app/Features/home/presentation/views/widgets/home_view_bo
 import 'package:bookly_app/constants.dart';
 import 'package:bookly_app/core/utlis/api_service.dart';
 import 'package:bookly_app/core/utlis/app_router.dart';
+import 'package:bookly_app/core/utlis/simple_bloc_observer.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,6 +30,7 @@ void main() async {
   setupServiceLocator();
   await Hive.openBox<BookEntity>(KFeaturedBox);
   await Hive.openBox<BookEntity>(KNewestBox);
+  Bloc.observer = SimpleBlocObserver();
   runApp(const MyApp());
 }
 
