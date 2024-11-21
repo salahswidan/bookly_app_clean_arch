@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
               FetchFeaturedBooksUseCase(
                getIt.get<HomeRepoImpl>(),
               ),
-            );
+            )..fetchFeaturedBooks();
           },
         ),
         BlocProvider(

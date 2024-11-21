@@ -7,7 +7,10 @@ import 'package:bookly_app/constants.dart';
 import 'package:bookly_app/core/utlis/assets.dart';
 import 'package:bookly_app/core/utlis/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'featured_books_list_view_bloc_builder.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -25,7 +28,7 @@ class HomeViewBody extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),
                 child: CustomAppBar(),
               ),
-              FeaturedBookListView(),
+              FeaturedBooksListViewBlocBuilder(),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),
                 child: Text(
@@ -41,7 +44,6 @@ class HomeViewBody extends StatelessWidget {
         ),
         const SliverFillRemaining(
           child: Padding(
-
             padding: const EdgeInsets.symmetric(horizontal: 30.0),
             child: BestSellerListView(),
           ),
